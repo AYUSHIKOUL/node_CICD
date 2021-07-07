@@ -1,4 +1,4 @@
-name: CI/CD implement
+name: CI/CD 
 
 on:
   push:
