@@ -3,7 +3,7 @@ name: CI/CD implement
 on:
   push:
     branches:
-      - master
+      - main
 
 jobs:
   buildAndTest:
