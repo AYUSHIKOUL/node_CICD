@@ -89,7 +89,7 @@ jobs:
       - name: Deployment Completed
         run: |-
           echo "deployment id: $DEPLOYMENT_ID"
-          export INSTANCE_STATE="unknown"
+          export STATE="unknown"
           while [ $STATE != "Succeeded" ]
           do            
             echo "Deployed on : $EC2-INSTANCE-IP:3000"
