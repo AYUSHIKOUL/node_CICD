@@ -87,14 +87,14 @@ jobs:
            --s3-location bucket=${{ matrix.s3-bucket }},key=${{ matrix.s3-filename }}.zip,bundleType=zip \
       
       - name: Deployment Completed
-        run: |-
-          echo "deployment id: $DEPLOYMENT_ID"
-          export STATE="unknown"
-          while [ $STATE != "Succeeded" ]
-          do            
-            echo "Deployed on : ${{ matrix.ec2-instnce-ip }}:3000"
-            sleep 10s
-          done
+        run: |
+          --echo "deployment id: $DEPLOYMENT_ID"
+          --export STATE="unknown"
+          --while [ $STATE != "Succeeded" ]
+          --do            
+              echo "Deployed on : ${{ matrix.ec2-instnce-ip }}:3000"
+              sleep 10s
+          --done
       
       
       
