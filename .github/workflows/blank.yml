@@ -92,8 +92,8 @@ jobs:
           export STATE="unknown"
           while [ $STATE != "Succeeded" ]
           do            
-            echo "Deployed on : $EC2-INSTANCE-IP:3000"
-            sleep 20s
+            echo "Deployed on : ${{ matrix.ec2-instnce-ip }}:3000"
+            sleep 10s
           done
       
       
