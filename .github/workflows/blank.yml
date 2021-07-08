@@ -37,7 +37,7 @@ jobs:
         deploy-group: ['aws-nodegithub-group']
         s3-bucket: ['aws-codedeploy-deployment101']
         s3-filename: ['aws-codedeploy-deployment101-${{ github.sha }}']
-        ec2-instance-ip: ['35.154.150.208']
+        ec2-DNS: ['ec2-35-154-150-208.ap-south-1.compute.amazonaws.com']
 
     needs: buildAndTest
     steps:
@@ -85,16 +85,9 @@ jobs:
            --deployment-group-name ${{ matrix.deploy-group }} \
            --file-exists-behavior OVERWRITE \
            --s3-location bucket=${{ matrix.s3-bucket }},key=${{ matrix.s3-filename }}.zip,bundleType=zip \
-      
-      - name: Deployment Completed
-        run: |
-          --echo "deployment id: $DEPLOYMENT_ID"
-          --export STATE="unknown"
-          --while [ $STATE != "Succeeded" ]
-          --do            
-              echo "Deployed on : ${{ matrix.ec2-instnce-ip }}:3000"
-              sleep 10s
-          --done
-      
-      
-      
+         
+         
+      - name: Deployed Application 
+        run:
+          echo "http://{{ matrix.ec2-DNS }}:3000"
+        
