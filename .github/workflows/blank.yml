@@ -37,8 +37,6 @@ jobs:
         deploy-group: ['aws-nodegithub-group']
         s3-bucket: ['aws-codedeploy-deployment101']
         s3-filename: ['aws-codedeploy-deployment101-${{ github.sha }}']
-        ec2-DNS: ['ec2-35-154-150-208.ap-south-1.compute.amazonaws.com']
-
     needs: buildAndTest
     steps:
       - uses: actions/checkout@v2
@@ -89,5 +87,5 @@ jobs:
          
       - name: Deployed Application 
         run:
-          echo "http://{{ matrix.ec2-DNS }}:3000"
+          curl "http://ec2-35-154-150-208.ap-south-1.compute.amazonaws.com:3000"
         
