@@ -1,9 +1,9 @@
-name: CI/CD
+name: CI/CD EC2
 
 on:
   push:
     branches:
-      - master
+      - main
 
 jobs:
   buildAndTest:
@@ -33,8 +33,8 @@ jobs:
       matrix:
         python-version: [3.8]
         node-version: ['10.x']
-        appname: ['node_CICD']
-        deploy-group: ['aws-codedeploy']
+        appname: ['aws-codedeploy']
+        deploy-group: ['aws-nodegithub-group']
         s3-bucket: ['aws-codedeploy-deployment101']
         s3-filename: ['aws-codedeploy-deployment101-${{ github.sha }}']
 
@@ -53,11 +53,11 @@ jobs:
         run: npm install
 
       # Install AWS CLI 2
-      - name: Install AWS CLI 2
-        run: |
-          curl "https://awscli.amazonaws.com/awscli-exe-linux-x86_64.zip" -o "awscliv2.zip"
-          unzip awscliv2.zip
-          sudo ./aws/install
+#      - name: Install AWS CLI 2
+ #       run: |
+  #        curl "https://awscli.amazonaws.com/awscli-exe-linux-x86_64.zip" -o "awscliv2.zip"
+   #       unzip awscliv2.zip
+    #      sudo ./aws/install
       # Configure AWS credentials
       - name: Configure AWS credentials
         uses: aws-actions/configure-aws-credentials@v1
